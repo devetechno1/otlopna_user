@@ -16,6 +16,7 @@ import 'package:sixam_mart/helper/custom_validator.dart';
 import 'package:sixam_mart/helper/responsive_helper.dart';
 import 'package:sixam_mart/helper/route_helper.dart';
 import 'package:sixam_mart/util/app_constants.dart';
+import 'package:sixam_mart/helper/string_helper.dart';
 import 'package:sixam_mart/util/dimensions.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
@@ -764,7 +765,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
 
   void _onSaveOrUpdateButtonPressed(LocationController locationController) async {
 
-    String numberWithCountryCode = _countryDialCode! + _contactPersonNumberController.text;
+    String numberWithCountryCode = _countryDialCode! + _contactPersonNumberController.text.removeZerosInFirst;
     PhoneValid phoneValid = await CustomValidator.isPhoneValid(numberWithCountryCode);
     numberWithCountryCode = phoneValid.phone;
 
