@@ -284,8 +284,8 @@ class AppConstants {
   static const String taxi = 'rental';
 
   static List<LanguageModel> languages = [
-    LanguageModel(imageUrl: Images.english, languageName: 'English', countryCode: 'US', languageCode: 'en'),
     LanguageModel(imageUrl: Images.arabic, languageName: 'عربى', countryCode: 'EG', languageCode: 'ar'),
+    LanguageModel(imageUrl: Images.english, languageName: 'English', countryCode: 'US', languageCode: 'en'),
   ];
 
   static List<String> joinDropdown = [
