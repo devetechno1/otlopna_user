@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "496804581818",
-    "project_id": "multi-master-1",
-    "storage_bucket": "multi-master-1.firebasestorage.app"
+    "project_number": "1039942312396",
+    "project_id": "otlopna",
+    "storage_bucket": "otlopna.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:496804581818:android:bbce6f4934340529884d83",
+        "mobilesdk_app_id": "1:1039942312396:android:458ec2dee8ffff8955bd69",
         "android_client_info": {
-          "package_name": "com.devetechno.master"
+          "package_name": "com.otlopna"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBP9f-5k7CiZlNOZRr4jqr1JLOYQXBWltc"
+          "current_key": "AIzaSyBaG230178WTA5vtV_8cre4FthPKZoDpeA"
         }
       ],
       "services": {
