@@ -522,7 +522,7 @@ Future<bool> checkInternet() async {
     return true;
   }
   final List<ConnectivityResult> connectivityResult = await (Connectivity().checkConnectivity());
-  bool isDisConnected = !connectivityResult.contains(ConnectivityResult.none);
+  bool isDisConnected = connectivityResult.contains(ConnectivityResult.none);
   if(isDisConnected) {
     if(!_hasErrorInternet){
       _hasErrorInternet = true;
