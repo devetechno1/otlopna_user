@@ -53,7 +53,7 @@ class BannerView extends StatelessWidget {
               itemBuilder: (context, index, _) {
             
                 return InkWell(
-                  onTap: () async {
+                  onTap: bannerDataList?[index] == null ? null : () async {
                     if(bannerDataList![index] is Item) {
                       Item? item = bannerDataList[index];
                       Get.find<ItemController>().navigateToItemPage(item, context);
