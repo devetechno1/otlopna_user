@@ -30,41 +30,31 @@ class ModuleView extends StatelessWidget {
         return const BannerView(isFeatured: true);
       }),
 
-      splashController.moduleList != null ? splashController.moduleList!.isNotEmpty ? ListView.builder(
-        padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
-        itemCount: splashController.moduleList!.length,
-        shrinkWrap: true, physics: const NeverScrollableScrollPhysics(),
-        itemBuilder: (context, index) {
-          return Align(
-            child: Container(
-              margin: const EdgeInsets.only(top: Dimensions.paddingSizeDefault),
-              clipBehavior: Clip.hardEdge,
-              constraints: const BoxConstraints(maxWidth: 600),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                boxShadow: [BoxShadow(color: Theme.of(context).primaryColor.withOpacity(0.1), spreadRadius: 1, blurRadius: 3)],
-              ),
-              child: CustomInkWell(
+      const SizedBox(height: Dimensions.paddingSizeSmall),
+
+      if(splashController.moduleList != null)
+        if(splashController.moduleList!.isNotEmpty)
+          ...List.generate(
+            splashController.moduleList!.length,
+            (index) {
+              return ModuleCard(
                 onTap: () => splashController.switchModule(index, true),
-                radius: Dimensions.radiusDefault,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
-                  child: AspectRatio(
-                    aspectRatio: 3,
-                    child: CustomImage(
-                      image: '${splashController.moduleList![index].thumbnailFullUrl}',
-                      height: 80,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          );
-        },
-      ) : Center(child: Padding(
-        padding: const EdgeInsets.only(top: Dimensions.paddingSizeSmall), child: Text('no_module_found'.tr),
-      )) : ModuleShimmer(isEnabled: splashController.moduleList == null),
+                image: '${splashController.moduleList![index].iconFullUrl}',
+                name: splashController.moduleList![index].moduleName!,
+                thumpNail: '${splashController.moduleList![index].thumbnailFullUrl}'
+              );
+            },
+          ) 
+        else
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: Dimensions.paddingSizeSmall), 
+              child: Text('no_module_found'.tr),
+            )
+          )
+      else const ModuleShimmer(isEnabled: true),
+
+
 
       GetBuilder<AddressController>(builder: (locationController) {
         List<AddressModel?> addressList = [];
@@ -131,6 +121,97 @@ class ModuleView extends StatelessWidget {
       const SizedBox(height: 120),
 
     ]);
+  }
+}
+
+class ModuleCard extends StatelessWidget {
+  const ModuleCard({
+    super.key, 
+    this.onTap, 
+    required this.image, 
+    required this.name, 
+    required this.thumpNail,
+  });
+
+  final Function? onTap;
+  final String name;
+  final String thumpNail;
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: Dimensions.paddingSizeSmall,
+          horizontal: Dimensions.paddingSizeDefault,
+        ),
+        child: CustomInkWell(
+          onTap: onTap,
+          radius: Dimensions.radiusDefault,
+          child: Container(
+            clipBehavior: Clip.hardEdge,
+            constraints: const BoxConstraints(maxWidth: 600),
+            decoration: BoxDecoration(
+              color: context.theme.cardColor,
+              borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+              boxShadow: [BoxShadow(color: Theme.of(context).primaryColor.withValues(alpha: 0.1), spreadRadius: 1, blurRadius: 3)],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    AspectRatio(
+                      aspectRatio: 3,
+                      child: CustomImage(
+                        image: thumpNail,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    PositionedDirectional(
+                      bottom: -45,
+                      end: Dimensions.paddingSizeDefault,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: context.theme.cardColor,
+                          borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+                          border: Border.all(
+                            color: context.theme.cardColor,
+                            width: 5,
+                          )
+                        ),
+                        child: CustomImage(
+                          image: thumpNail,
+                          fit: BoxFit.cover,
+                          height: 100,
+                          width: 100,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  padding: const EdgeInsetsDirectional.only(
+                    start: Dimensions.paddingSizeDefault,
+                    end: 135,
+                  ),
+                  height: 60,
+                  alignment: AlignmentDirectional.centerStart,
+                  child: Text(
+                    name,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: context.textTheme.titleLarge,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
 
