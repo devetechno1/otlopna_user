@@ -253,8 +253,8 @@ class _WebNewOnMartViewWidgetState extends State<WebNewOnMartViewWidget> {
           ]),
 
         if(showBackButton)
-          Positioned(
-            top: 110, left: 0,
+          PositionedDirectional(
+            top: 110, start: 0,
             child: ArrowIconButton(
               isRight: false,
               onTap: () => scrollController.animateTo(scrollController.offset - (Dimensions.webMaxWidth / 3),
@@ -263,8 +263,8 @@ class _WebNewOnMartViewWidgetState extends State<WebNewOnMartViewWidget> {
           ),
 
         if(showForwardButton)
-          Positioned(
-            top: 110, right: 0,
+          PositionedDirectional(
+            top: 110, end: 0,
             child: ArrowIconButton(
               onTap: () => scrollController.animateTo(scrollController.offset + (Dimensions.webMaxWidth / 3),
                   duration: const Duration(milliseconds: 500), curve: Curves.easeInOut),

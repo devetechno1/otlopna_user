@@ -111,8 +111,8 @@ class _WebBestReviewItemViewWidgetState extends State<WebBestReviewItemViewWidge
         ),
 
         if(showBackButton)
-          Positioned(
-            top: 185, left: 0,
+          PositionedDirectional(
+            top: 185, start: 0,
             child: ArrowIconButton(
               isRight: false,
               onTap: () => scrollController.animateTo(scrollController.offset - (Dimensions.webMaxWidth / 3),
@@ -121,8 +121,8 @@ class _WebBestReviewItemViewWidgetState extends State<WebBestReviewItemViewWidge
           ),
 
         if(showForwardButton)
-        Positioned(
-          top: 185, right: 0,
+        PositionedDirectional(
+          top: 185, end: 0,
           child: ArrowIconButton(
             onTap: () => scrollController.animateTo(scrollController.offset + (Dimensions.webMaxWidth / 3),
                 duration: const Duration(milliseconds: 500), curve: Curves.easeInOut),

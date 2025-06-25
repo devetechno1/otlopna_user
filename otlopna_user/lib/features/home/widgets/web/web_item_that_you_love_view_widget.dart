@@ -175,15 +175,15 @@ class _WebItemThatYouLoveViewWidgetState extends State<WebItemThatYouLoveViewWid
             ),
           ]),
 
-        Positioned(
-          top: 220, right: 0,
+        PositionedDirectional(
+          top: 220, end: 0,
           child: ArrowIconButton(
             onTap: () => carouselController.nextPage(),
           ),
         ),
 
-        Positioned(
-          top: 220, left: 0,
+        PositionedDirectional(
+          top: 220, start: 0,
           child: ArrowIconButton(
             onTap: () => carouselController.previousPage(),
             isRight: false,
@@ -373,8 +373,8 @@ class _WebItemThatYouLoveForShopState extends State<WebItemThatYouLoveForShop> {
         ]),
 
         if(showBackButton)
-          Positioned(
-            top: 200, left: 0,
+          PositionedDirectional(
+            top: 200, start: 0,
             child: ArrowIconButton(
               isRight: false,
               onTap: () => scrollController.animateTo(scrollController.offset - (Dimensions.webMaxWidth / 3),
@@ -383,8 +383,8 @@ class _WebItemThatYouLoveForShopState extends State<WebItemThatYouLoveForShop> {
           ),
 
         if(showForwardButton)
-          Positioned(
-            top: 200, right: 0,
+          PositionedDirectional(
+            top: 200, end: 0,
             child: ArrowIconButton(
               onTap: () => scrollController.animateTo(scrollController.offset + (Dimensions.webMaxWidth / 3),
                   duration: const Duration(milliseconds: 500), curve: Curves.easeInOut),

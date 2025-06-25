@@ -104,6 +104,7 @@ class _WebMostPopularItemViewWidgetState extends State<WebMostPopularItemViewWid
                       item: itemList[index],
                       isFood: widget.isFood,
                       isShop: widget.isShop,
+                      index: index,
                     ),
                   );
                 },
@@ -114,8 +115,8 @@ class _WebMostPopularItemViewWidgetState extends State<WebMostPopularItemViewWid
         ),
 
         if(showBackButton)
-          Positioned(
-            top: 200, left: 0,
+          PositionedDirectional(
+            top: 200, start: 0,
             child: ArrowIconButton(
               isRight: false,
               onTap: () => scrollController.animateTo(scrollController.offset - (Dimensions.webMaxWidth/3),
@@ -124,8 +125,8 @@ class _WebMostPopularItemViewWidgetState extends State<WebMostPopularItemViewWid
           ),
 
         if(showForwardButton)
-          Positioned(
-            top: 200, right: 0,
+          PositionedDirectional(
+            top: 200, end: 0,
             child: ArrowIconButton(
               onTap: () => scrollController.animateTo(scrollController.offset + (Dimensions.webMaxWidth/3),
                   duration: const Duration(milliseconds: 500), curve: Curves.easeInOut),

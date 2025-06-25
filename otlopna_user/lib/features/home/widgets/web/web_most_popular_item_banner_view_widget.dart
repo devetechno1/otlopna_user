@@ -75,16 +75,16 @@ class WebMostPopularItemBannerViewWidget extends StatelessWidget {
                 onPageChanged: (int index) => campaignController.setCurrentIndex(index, true),
               ),
 
-              campaignController.currentIndex != 0 ? Positioned(
-                top: 0, bottom: 0, left: 0,
+              campaignController.currentIndex != 0 ? PositionedDirectional(
+                top: 0, bottom: 0, start: 0,
                 child: ArrowIconButton(
                   isRight: false,
                   onTap: () => pageController.previousPage(duration: const Duration(seconds: 1), curve: Curves.easeInOut),
                 ),
               ) : const SizedBox(),
 
-              campaignController.currentIndex != ((campaignController.basicCampaignList!.length/2).ceil()-1) ? Positioned(
-                top: 0, bottom: 0, right: 0,
+              campaignController.currentIndex != ((campaignController.basicCampaignList!.length/2).ceil()-1) ? PositionedDirectional(
+                top: 0, bottom: 0, end: 0,
                 child: ArrowIconButton(
                   onTap: () => pageController.nextPage(duration: const Duration(seconds: 1), curve: Curves.easeInOut),
                 ),

@@ -93,8 +93,8 @@ class _WebNewOnViewWidgetState extends State<WebNewOnViewWidget> {
           ),
 
           if(showBackButton)
-            Positioned(
-              top: 70, left: 0,
+            PositionedDirectional(
+              top: 70, start: 0,
               child: ArrowIconButton(
                 isRight: false,
                 onTap: () => scrollController.animateTo(scrollController.offset - (Dimensions.webMaxWidth / 3),
@@ -103,8 +103,8 @@ class _WebNewOnViewWidgetState extends State<WebNewOnViewWidget> {
             ),
 
           if(showForwardButton)
-            Positioned(
-              top: 70, right: 0,
+            PositionedDirectional(
+              top: 70, end: 0,
               child: ArrowIconButton(
                 onTap: () => scrollController.animateTo(scrollController.offset + (Dimensions.webMaxWidth / 3),
                     duration: const Duration(milliseconds: 500), curve: Curves.easeInOut),

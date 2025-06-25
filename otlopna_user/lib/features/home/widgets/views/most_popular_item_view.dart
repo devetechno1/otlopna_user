@@ -54,6 +54,7 @@ class MostPopularItemView extends StatelessWidget {
                         item: itemList[index],
                         isShop: isShop,
                         isFood: isFood,
+                        index: index,
                       ),
                     );
                   },

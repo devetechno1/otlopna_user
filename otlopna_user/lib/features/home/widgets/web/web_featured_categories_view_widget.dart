@@ -150,8 +150,8 @@ class _WebFeaturedCategoriesViewWidgetState extends State<WebFeaturedCategoriesV
                     ),
 
                     if(showForwardButton)
-                      Positioned(
-                        top: 90, right: 0,
+                      PositionedDirectional(
+                        top: 90, end: 0,
                         child: ArrowIconButton(
                           onTap: () => scrollController.animateTo(scrollController.offset + (Dimensions.webMaxWidth / 3),
                               duration: const Duration(milliseconds: 500), curve: Curves.easeInOut),
@@ -159,8 +159,8 @@ class _WebFeaturedCategoriesViewWidgetState extends State<WebFeaturedCategoriesV
                       ),
 
                     if(showBackButton)
-                      Positioned(
-                        top: 90, left: 0,
+                      PositionedDirectional(
+                        top: 90, start: 0,
                         child: ArrowIconButton(
                           onTap: () => scrollController.animateTo(scrollController.offset - (Dimensions.webMaxWidth / 3),
                               duration: const Duration(milliseconds: 500), curve: Curves.easeInOut),
