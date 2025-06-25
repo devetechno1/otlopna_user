@@ -176,14 +176,14 @@ class ModuleCard extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           color: context.theme.cardColor,
-                          borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+                          borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
                           border: Border.all(
                             color: context.theme.cardColor,
                             width: 5,
                           )
                         ),
                         child: CustomImage(
-                          image: thumpNail,
+                          image: image,
                           fit: BoxFit.cover,
                           height: 100,
                           width: 100,
